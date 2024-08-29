@@ -118,46 +118,46 @@ const DSLRSimulator = () => {
   };
 
   return (
-    <div className="p-4 max-w-2xl mx-auto bg-gray-100 rounded-lg shadow-lg">
-      <div className="mb-4 bg-blue-100 p-4 rounded-lg">
-        <h2 className="text-xl font-bold">Current Scenario:</h2>
-        <p>{currentScenario.name}</p>
+    <div className="p-6 max-w-4xl mx-auto bg-gray-50 rounded-xl shadow-lg">
+      <div className="mb-6 bg-white p-4 rounded-lg shadow">
+        <h2 className="text-2xl font-bold text-gray-800">Current Scenario:</h2>
+        <p className="text-lg text-gray-600">{currentScenario.name}</p>
       </div>
-      <div className="grid grid-cols-2 gap-4 mb-4">
-        <div className="bg-black text-white p-4 rounded-lg">
-          <div className="grid grid-cols-3 gap-4 text-center mb-4">
-            <div>f/{settings.aperture}</div>
-            <div>{formatShutterSpeed(settings.shutterSpeed)}</div>
-            <div>ISO {settings.iso}</div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div className="bg-gray-800 text-white p-6 rounded-lg shadow">
+          <div className="grid grid-cols-3 gap-4 text-center mb-6">
+            <div className="text-xl">f/{settings.aperture}</div>
+            <div className="text-xl">{formatShutterSpeed(settings.shutterSpeed)}</div>
+            <div className="text-xl">ISO {settings.iso}</div>
           </div>
           <div className="grid grid-cols-3 gap-4">
             {['aperture', 'shutterSpeed', 'iso'].map((setting) => (
               <div key={setting} className="flex flex-col items-center">
-                <button onClick={() => changeSetting(setting, 'up')} className="w-full mb-2 bg-blue-500 text-white p-2 rounded">▲</button>
-                <span className="mb-2">{setting.charAt(0).toUpperCase() + setting.slice(1)}</span>
-                <button onClick={() => changeSetting(setting, 'down')} className="w-full bg-blue-500 text-white p-2 rounded">▼</button>
+                <button onClick={() => changeSetting(setting, 'up')} className="w-full mb-2 bg-blue-500 hover:bg-blue-600 text-white p-2 rounded transition duration-300">▲</button>
+                <span className="mb-2 text-sm">{setting.charAt(0).toUpperCase() + setting.slice(1)}</span>
+                <button onClick={() => changeSetting(setting, 'down')} className="w-full bg-blue-500 hover:bg-blue-600 text-white p-2 rounded transition duration-300">▼</button>
               </div>
             ))}
           </div>
         </div>
-        <div className="relative">
+        <div className="relative bg-white p-4 rounded-lg shadow">
           <img src={currentScenario.image} alt="Scene" className="w-full h-full object-cover rounded-lg" style={imageStyle} />
           {score !== null && (
-            <div className="absolute top-2 right-2 bg-white rounded-full p-2 font-bold text-lg">
+            <div className="absolute top-4 right-4 bg-white rounded-full p-3 font-bold text-xl shadow">
               Score: {score}/30
             </div>
           )}
         </div>
       </div>
-      <div className="flex justify-between items-center mb-4">
-        <button onClick={takePicture} className="flex-1 mr-2 bg-green-500 text-white p-2 rounded">Take Picture</button>
-        <button onClick={retryScenario} className="mr-2 bg-yellow-500 text-white p-2 rounded">Retry</button>
-        <button onClick={nextScenario} className="bg-blue-500 text-white p-2 rounded">Next</button>
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
+        <button onClick={takePicture} className="w-full sm:w-auto mb-2 sm:mb-0 sm:mr-2 bg-green-500 hover:bg-green-600 text-white p-3 rounded-lg transition duration-300">Take Picture</button>
+        <button onClick={retryScenario} className="w-full sm:w-auto mb-2 sm:mb-0 sm:mr-2 bg-yellow-500 hover:bg-yellow-600 text-white p-3 rounded-lg transition duration-300">Retry</button>
+        <button onClick={nextScenario} className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg transition duration-300">Next</button>
       </div>
       {feedback && (
-        <div className="bg-yellow-100 p-4 rounded-lg">
-          <h3 className="font-bold">Feedback:</h3>
-          <p>{feedback}</p>
+        <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-lg">
+          <h3 className="font-bold text-yellow-800">Feedback:</h3>
+          <p className="text-yellow-700">{feedback}</p>
         </div>
       )}
     </div>
